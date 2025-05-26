@@ -76,6 +76,29 @@ body {
   line-height: 1.6;
 }
 
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 10;
+}
+
+.language-toggle button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin-left: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.language-toggle button:hover {
+  background-color: #1a242f;
+}
+
 @media screen and (max-width: 768px) {
   .cv-container {
     flex-direction: column;
