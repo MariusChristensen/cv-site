@@ -1,7 +1,72 @@
+/* ===== FONT IMPORTS ===== */
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("assets/fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-SemiBold.woff2") format("woff2"),
+    url("assets/fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2"),
+    url("assets/fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-regular.woff2") format("woff2"),
+    url("assets/fonts/inter-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-500.woff2") format("woff2"),
+    url("assets/fonts/inter-500.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-600.woff2") format("woff2"),
+    url("assets/fonts/inter-600.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-italic.woff2") format("woff2"),
+    url("assets/fonts/inter-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ===== BASE STYLES ===== */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -25,12 +90,18 @@ body {
 }
 
 .sidebar h1 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   font-size: 24px;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
 .sidebar h2 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   font-size: 16px;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
@@ -75,6 +146,9 @@ body {
 }
 
 .content h2 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 600;
   border-bottom: 2px solid #ddd;
   padding-bottom: 5px;
   margin-top: 0;
@@ -83,6 +157,61 @@ body {
 .content p {
   margin-bottom: 20px;
   line-height: 1.6;
+}
+
+/* ===== EXPERIENCE & EDUCATION LISTS ===== */
+.experience-list,
+.education-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.experience-item,
+.education-item {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.experience-item:last-child,
+.education-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.job-title,
+.education-title {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #2c3e50;
+  display: inline;
+}
+
+.job-details,
+.education-details {
+  color: #666;
+  font-size: 14px;
+  font-style: italic;
+  display: inline;
+  margin-left: 8px;
+}
+
+.job-title::after,
+.education-title::after {
+  content: " – ";
+  font-weight: normal;
+  color: #666;
+}
+
+.job-description,
+.education-description {
+  line-height: 1.6;
+  color: #333;
+  display: block;
+  margin-top: 5px;
 }
 
 /* ===== UI CONTROLS ===== */
@@ -124,10 +253,14 @@ body {
   max-width: 400px;
   width: 90%;
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
 .print-modal h3 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 600;
   color: #2c3e50;
   margin-top: 0;
   margin-bottom: 20px;
@@ -266,6 +399,32 @@ body {
   .content p {
     margin-bottom: 14px;
     line-height: 1.5;
+  }
+
+  /* Experience and education print styles */
+  .experience-item,
+  .education-item {
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .job-title,
+  .education-title {
+    font-size: 15px;
+  }
+
+  .job-details,
+  .education-details {
+    font-size: 13px;
+  }
+
+  .job-description,
+  .education-description {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-top: 4px;
   }
 
   /* Prevent awkward page breaks */
