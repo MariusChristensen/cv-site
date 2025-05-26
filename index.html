@@ -12,6 +12,10 @@
       <div class="language-toggle">
         <button onclick="setLanguage('no')">Norsk</button>
         <button onclick="setLanguage('en')">English</button>
+        <button onclick="printCV()">
+          <span data-lang="no">📄 PDF</span>
+          <span data-lang="en">📄 PDF</span>
+        </button>
       </div>
       <aside class="sidebar">
         <h1>Marius Skårdal Christensen</h1>
@@ -20,12 +24,12 @@
         </div>
         <p class="title">
           <span data-lang="no">Frontend-utvikler</span>
-          <span data-lang="en" style="display: none">Frontend Developer</span>
+          <span data-lang="en">Frontend Developer</span>
         </p>
         <section>
           <h2>
             <span data-lang="no">Kontakt</span>
-            <span data-lang="en" style="display: none">Contact</span>
+            <span data-lang="en">Contact</span>
           </h2>
           <p>📍 Liane 16, 3914 Skien</p>
           <p>📞 45 41 49 40</p>
@@ -38,48 +42,44 @@
             🌐
             <a href="https://mariusc-portfolio.netlify.app/">
               <span data-lang="no">Portefølje</span>
-              <span data-lang="en" style="display: none">Portfolio</span>
+              <span data-lang="en">Portfolio</span>
             </a>
           </p>
         </section>
         <section>
           <h2>
             <span data-lang="no">Ferdigheter</span>
-            <span data-lang="en" style="display: none">Skills</span>
+            <span data-lang="en">Skills</span>
           </h2>
           <ul>
             <li>HTML, CSS, JavaScript</li>
             <li>React, Tailwind, Git</li>
             <li>
               <span data-lang="no">API-integrasjon</span>
-              <span data-lang="en" style="display: none">API integration</span>
+              <span data-lang="en">API integration</span>
             </li>
             <li>GitHub, CLI</li>
             <li>
               <span data-lang="no">Kundeservice, problemløsing</span>
-              <span data-lang="en" style="display: none"
-                >Customer service, problem solving</span
-              >
+              <span data-lang="en">Customer service, problem solving</span>
             </li>
           </ul>
         </section>
         <section>
           <h2>
             <span data-lang="no">Hobbyer</span>
-            <span data-lang="en" style="display: none">Hobbies</span>
+            <span data-lang="en">Hobbies</span>
           </h2>
           <ul>
             <li>Discgolf</li>
             <li>Gaming</li>
             <li>
               <span data-lang="no">Film og serier</span>
-              <span data-lang="en" style="display: none"
-                >Movies and series</span
-              >
+              <span data-lang="en">Movies and series</span>
             </li>
             <li>
               <span data-lang="no">Teknologinyheter</span>
-              <span data-lang="en" style="display: none">Tech news</span>
+              <span data-lang="en">Tech news</span>
             </li>
           </ul>
         </section>
@@ -88,7 +88,7 @@
         <section>
           <h2>
             <span data-lang="no">Om meg</span>
-            <span data-lang="en" style="display: none">About me</span>
+            <span data-lang="en">About me</span>
           </h2>
           <p>
             <span data-lang="no">
@@ -97,7 +97,7 @@
               nå i Kodehode-programmet gjennom NAV. Jeg er løsningsorientert,
               nysgjerrig og trives med å lære nye teknologier og jobbe i team.
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               Frontend developer with a passion for user-friendly and modern
               solutions. I have a background from frontend studies at Noroff and
               am currently participating in the Kodehode program through NAV.
@@ -109,7 +109,7 @@
         <section>
           <h2>
             <span data-lang="no">Jobberfaring</span>
-            <span data-lang="en" style="display: none">Work Experience</span>
+            <span data-lang="en">Work Experience</span>
           </h2>
           <p>
             <span data-lang="no">
@@ -118,7 +118,7 @@
               Assisterte ung mann med MS i daglige gjøremål og sosiale
               aktiviteter.
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Personal Assistant (BPA)</strong> – ULOBA, Skien
               (2016–2017)<br />
               Assisted a young man with MS in daily tasks and social activities.
@@ -129,7 +129,7 @@
               <strong>Kundeansvarlig</strong> – Telenor (2013–2015)<br />
               Kundeservice og salg via telefon. Måloppnåelse og teamarbeid.
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Customer Advisor</strong> – Telenor (2013–2015)<br />
               Customer service and sales by phone. Goal achievement and
               teamwork.
@@ -140,7 +140,7 @@
               <strong>Helsefagarbeider</strong> – Skien kommune (2008–2012)<br />
               Turnusarbeid i omsorgsbolig.
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Healthcare Worker</strong> – Skien municipality
               (2008–2012)<br />
               Shift work in assisted living facility.
@@ -152,7 +152,7 @@
               (2006–2007)<br />
               Kundebehandling og kassaarbeid.
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Shop Assistant</strong> – Affen Tipp og Tobakk
               (2006–2007)<br />
               Customer service and cashier duties.
@@ -162,7 +162,7 @@
         <section>
           <h2>
             <span data-lang="no">Utdanning</span>
-            <span data-lang="en" style="display: none">Education</span>
+            <span data-lang="en">Education</span>
           </h2>
           <p>
             <span data-lang="no">
@@ -170,7 +170,7 @@
               Praktisk opplæring i frontend-utvikling med fokus på moderne stack
               og prosjekter.
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Kodehode (NAV program)</strong> – 2025–ongoing<br />
               Practical training in frontend development with a focus on modern
               tech stack and real-world projects.
@@ -181,7 +181,7 @@
               <strong>Frontend-utvikling</strong> – Noroff (2021–2022)<br />
               Fullførte 2 av 4 semestre, inkludert fag i 3. semester.
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Frontend Development</strong> – Noroff (2021–2022)<br />
               Completed 2 out of 4 semesters, including some subjects in the
               third semester.
@@ -192,7 +192,7 @@
               <strong>Bachelor i audiografi (ikke fullført)</strong> – HiST
               (2010–2013)
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Bachelor in Audiology (not completed)</strong> – HiST
               (2010–2013)
             </span>
@@ -201,7 +201,7 @@
             <span data-lang="no">
               <strong>Samfunnskunnskap</strong> – HiT, Zanzibar (2008)
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>Social Studies</strong> – HiT, Zanzibar (2008)
             </span>
           </p>
@@ -209,7 +209,7 @@
             <span data-lang="no">
               <strong>Videregående</strong> – Idrettsfag (2004–2007)
             </span>
-            <span data-lang="en" style="display: none">
+            <span data-lang="en">
               <strong>High School</strong> – Sports specialization (2004–2007)
             </span>
           </p>

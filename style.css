@@ -1,3 +1,4 @@
+/* ===== BASE STYLES ===== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -13,12 +14,29 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* ===== SIDEBAR STYLES ===== */
 .sidebar {
   background-color: #2c3e50;
   color: white;
   padding: 30px 20px;
   width: 300px;
   text-align: center;
+}
+
+.sidebar h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.sidebar h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.sidebar .title {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 20px;
 }
 
 .sidebar .photo img {
@@ -28,17 +46,6 @@ body {
   border-radius: 50%;
   margin-bottom: 15px;
   border: 2px solid #1abc9c;
-}
-
-.sidebar h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.sidebar .title {
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 20px;
 }
 
 .sidebar section {
@@ -60,6 +67,7 @@ body {
   margin-bottom: 8px;
 }
 
+/* ===== CONTENT STYLES ===== */
 .content {
   padding: 40px;
   flex: 1;
@@ -76,11 +84,17 @@ body {
   line-height: 1.6;
 }
 
+/* ===== UI CONTROLS ===== */
 .language-toggle {
   position: absolute;
   top: 20px;
   right: 40px;
   z-index: 10;
+}
+
+/* Language switching - English hidden by default */
+[data-lang="en"] {
+  display: none;
 }
 
 .language-toggle button {
@@ -99,6 +113,94 @@ body {
   background-color: #1a242f;
 }
 
+/* ===== PRINT STYLES ===== */
+@media print {
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  /* Force background colors to print */
+  * {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide UI elements */
+  .language-toggle {
+    display: none;
+  }
+
+  /* Layout adjustments */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+
+  .cv-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  /* Sidebar print optimizations */
+  .sidebar {
+    width: 40%;
+    min-width: 350px;
+    padding: 25px 20px;
+    font-size: 14px;
+  }
+
+  .sidebar h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .sidebar h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .sidebar .photo img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  /* Content print optimizations */
+  .content {
+    padding: 25px 20px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .content h2 {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .content p {
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  /* Prevent awkward page breaks */
+  .sidebar section,
+  .content section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
 @media screen and (max-width: 768px) {
   .cv-container {
     flex-direction: column;
@@ -110,5 +212,9 @@ body {
 
   .content {
     padding: 20px;
+  }
+
+  .language-toggle {
+    right: 20px;
   }
 }
