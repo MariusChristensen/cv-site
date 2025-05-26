@@ -8,7 +8,7 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <div class="cv-container" style="position: relative">
+    <div class="cv-container">
       <div class="language-toggle">
         <button onclick="setLanguage('no')">Norsk</button>
         <button onclick="setLanguage('en')">English</button>
@@ -23,8 +23,8 @@
           <img src="bilde.jpeg" alt="Portrett av Marius" />
         </div>
         <p class="title">
-          <span data-lang="no">Frontend-utvikler</span>
-          <span data-lang="en">Frontend Developer</span>
+          <span data-lang="no">Aspirerende Frontend Utvikler</span>
+          <span data-lang="en">Aspiring Frontend Developer</span>
         </p>
         <section>
           <h2>
@@ -36,14 +36,15 @@
           <p>✉️ mariusschristensen@gmail.com</p>
           <p>
             🔗
-            <a href="https://github.com/MariusChristensen">GitHub</a>
+            <a href="https://github.com/MariusChristensen"
+              >github.com/MariusChristensen</a
+            >
           </p>
           <p>
             🌐
-            <a href="https://mariusc-portfolio.netlify.app/">
-              <span data-lang="no">Portefølje</span>
-              <span data-lang="en">Portfolio</span>
-            </a>
+            <a href="https://mariusc-portfolio.netlify.app/"
+              >mariusc-portfolio.netlify.app</a
+            >
           </p>
         </section>
         <section>
@@ -215,6 +216,24 @@
           </p>
         </section>
       </main>
+    </div>
+
+    <!-- Print Instructions Modal -->
+    <div id="printModal" class="print-modal">
+      <div class="print-modal-content">
+        <h3 id="modalTitle">Print Instructions</h3>
+        <p id="modalText">Instructions will appear here</p>
+        <div class="print-modal-buttons">
+          <button onclick="cancelPrint()" class="cancel">
+            <span data-lang="no">Avbryt</span>
+            <span data-lang="en">Cancel</span>
+          </button>
+          <button onclick="confirmPrint()">
+            <span data-lang="no">Skriv ut</span>
+            <span data-lang="en">Print</span>
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
