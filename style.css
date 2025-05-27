@@ -1,8 +1,8 @@
 /* ===== FONT IMPORTS ===== */
 @font-face {
   font-family: "Montserrat";
-  src: url("assets/fonts/Montserrat-Regular.woff2") format("woff2"),
-    url("assets/fonts/Montserrat-Regular.woff") format("woff");
+  src: url("assets/fonts/montserrat-regular.woff2") format("woff2"),
+    url("assets/fonts/montserrat-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,8 +10,8 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("assets/fonts/Montserrat-SemiBold.woff2") format("woff2"),
-    url("assets/fonts/Montserrat-SemiBold.woff") format("woff");
+  src: url("assets/fonts/montserrat-600.woff2") format("woff2"),
+    url("assets/fonts/montserrat-600.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -19,8 +19,8 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2"),
-    url("assets/fonts/Montserrat-Bold.woff") format("woff");
+  src: url("assets/fonts/montserrat-700.woff2") format("woff2"),
+    url("assets/fonts/montserrat-700.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -137,6 +137,44 @@ body {
 
 .sidebar ul li {
   margin-bottom: 8px;
+}
+
+/* ===== QR CODE STYLES ===== */
+.qr-container {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.qr-item {
+  flex: 1;
+  text-align: center;
+}
+
+.qr-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: white;
+}
+
+.qr-code {
+  display: block;
+  margin: 0px auto;
+  border: 2px solid #1abc9c;
+  border-radius: 4px;
+  background-color: white;
+  width: 120px;
+  height: 120px;
+}
+
+.qr-url {
+  font-size: 8px;
+  color: #ccc;
+  margin-top: 4px;
+  margin-bottom: 0;
+  word-break: break-all;
+  line-height: 1.1;
 }
 
 /* ===== CONTENT STYLES ===== */
@@ -426,6 +464,31 @@ body {
     margin-top: 4px;
   }
 
+  /* QR code print styles */
+  .qr-container {
+    display: flex !important;
+    gap: 10px !important;
+  }
+
+  .qr-code {
+    border: 1px solid #2c3e50 !important;
+    background-color: white !important;
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .qr-url {
+    color: #ccc !important;
+    font-size: 8px;
+  }
+
+  .qr-label {
+    color: white !important;
+    font-size: 12px;
+    margin-bottom: 4px !important;
+    font-weight: 600 !important;
+  }
+
   /* Prevent awkward page breaks */
   .sidebar section,
   .content section {
@@ -450,5 +513,16 @@ body {
 
   .language-toggle {
     right: 20px;
+  }
+
+  /* Stack QR codes on very small screens */
+  .qr-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .qr-code {
+    width: 100px;
+    height: 100px;
   }
 }

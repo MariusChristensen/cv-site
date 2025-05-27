@@ -12,6 +12,9 @@
       <div class="language-toggle">
         <button onclick="setLanguage('no')">Norsk</button>
         <button onclick="setLanguage('en')">English</button>
+        <button onclick="toggleQRMode()">
+          <span id="qr-toggle-text">🔗 Links</span>
+        </button>
         <button onclick="printCV()">
           <span data-lang="no">📄 PDF</span>
           <span data-lang="en">📄 PDF</span>
@@ -34,18 +37,42 @@
           <p>📍 Liane 16, 3914 Skien</p>
           <p>📞 45 41 49 40</p>
           <p>✉️ mariusschristensen@gmail.com</p>
-          <p>
-            🔗
-            <a href="https://github.com/MariusChristensen"
-              >github.com/MariusChristensen</a
-            >
-          </p>
-          <p>
-            🌐
-            <a href="https://mariusc-portfolio.netlify.app/"
-              >mariusc-portfolio.netlify.app</a
-            >
-          </p>
+
+          <!-- Regular Links (default) -->
+          <div class="link-mode">
+            <p>
+              🔗
+              <a href="https://github.com/MariusChristensen"
+                >github.com/MariusChristensen</a
+              >
+            </p>
+            <p>
+              🌐
+              <a href="https://mariusc-portfolio.netlify.app/"
+                >mariusc-portfolio.netlify.app</a
+              >
+            </p>
+          </div>
+
+          <!-- QR Code Mode (hidden by default) -->
+          <div class="qr-mode" style="display: none">
+            <div class="qr-container">
+              <div class="qr-item">
+                <p class="qr-label">GitHub</p>
+                <img id="github-qr" class="qr-code" alt="GitHub QR Code" />
+                <p class="qr-url">github.com/MariusChristensen</p>
+              </div>
+              <div class="qr-item">
+                <p class="qr-label">Portfolio</p>
+                <img
+                  id="portfolio-qr"
+                  class="qr-code"
+                  alt="Portfolio QR Code"
+                />
+                <p class="qr-url">mariusc-portfolio.netlify.app</p>
+              </div>
+            </div>
+          </div>
         </section>
         <section>
           <h2>

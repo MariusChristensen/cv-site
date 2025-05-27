@@ -1,6 +1,7 @@
 // Global variables for better performance
 let currentLanguage = "no";
 let printModal;
+let qrMode = false;
 
 // Language switching functionality
 function setLanguage(lang) {
@@ -14,6 +15,43 @@ function setLanguage(lang) {
 // Get current language more reliably
 function getCurrentLanguage() {
   return currentLanguage;
+}
+
+// QR Code toggle functionality
+function toggleQRMode() {
+  qrMode = !qrMode;
+  const linkMode = document.querySelector(".link-mode");
+  const qrModeDiv = document.querySelector(".qr-mode");
+  const toggleText = document.getElementById("qr-toggle-text");
+
+  if (qrMode) {
+    // Switch to QR mode
+    linkMode.style.display = "none";
+    qrModeDiv.style.display = "block";
+    toggleText.textContent = "📱 QR";
+    generateQRCodes();
+  } else {
+    // Switch to link mode
+    linkMode.style.display = "block";
+    qrModeDiv.style.display = "none";
+    toggleText.textContent = "🔗 Links";
+  }
+}
+
+// Generate QR codes using QR Server API
+function generateQRCodes() {
+  const githubImg = document.getElementById("github-qr");
+  const portfolioImg = document.getElementById("portfolio-qr");
+
+  // Generate GitHub QR code
+  const githubUrl = encodeURIComponent("https://github.com/MariusChristensen");
+  githubImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=85x85&data=${githubUrl}`;
+
+  // Generate Portfolio QR code
+  const portfolioUrl = encodeURIComponent(
+    "https://mariusc-portfolio.netlify.app/"
+  );
+  portfolioImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=85x85&data=${portfolioUrl}`;
 }
 
 // Print to PDF functionality
