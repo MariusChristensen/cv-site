@@ -367,7 +367,6 @@ body {
   /* Force background colors to print */
   * {
     -webkit-print-color-adjust: exact;
-    color-adjust: exact;
     print-color-adjust: exact;
   }
 
