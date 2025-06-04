@@ -1,7 +1,8 @@
 // Global variables for better performance
 let currentLanguage = "no";
 let printModal;
-let qrMode = false;
+let currentLinkMode = "links"; // "links" or "qr"
+let currentAboutMode = "application"; // "application" or "standard"
 
 // Language switching functionality
 function setLanguage(lang) {
@@ -10,6 +11,20 @@ function setLanguage(lang) {
     el.style.display =
       el.getAttribute("data-lang") === lang ? "inline" : "none";
   });
+
+  // Update active language button styling
+  document.querySelectorAll(".tab-button").forEach((btn) => {
+    const buttonText = btn.textContent.trim();
+    if (buttonText === "Norsk" || buttonText === "English") {
+      btn.classList.remove("active");
+      if (
+        (lang === "no" && buttonText === "Norsk") ||
+        (lang === "en" && buttonText === "English")
+      ) {
+        btn.classList.add("active");
+      }
+    }
+  });
 }
 
 // Get current language more reliably
@@ -17,25 +32,65 @@ function getCurrentLanguage() {
   return currentLanguage;
 }
 
-// QR Code toggle functionality
-function toggleQRMode() {
-  qrMode = !qrMode;
+// Link mode functionality (Links vs QR Codes)
+function setLinkMode(mode) {
+  currentLinkMode = mode;
   const linkMode = document.querySelector(".link-mode");
   const qrModeDiv = document.querySelector(".qr-mode");
-  const toggleText = document.getElementById("qr-toggle-text");
 
-  if (qrMode) {
+  if (mode === "qr") {
     // Switch to QR mode
     linkMode.style.display = "none";
     qrModeDiv.style.display = "block";
-    toggleText.textContent = "📱 QR";
     generateQRCodes();
   } else {
     // Switch to link mode
     linkMode.style.display = "block";
     qrModeDiv.style.display = "none";
-    toggleText.textContent = "🔗 Links";
   }
+
+  // Update active button states
+  updateLinkModeButtons();
+}
+
+// About section functionality (Application vs Standard CV)
+function setAboutMode(mode) {
+  currentAboutMode = mode;
+  const openApplicationSection = document.getElementById(
+    "open-application-section"
+  );
+  const aboutMeSection = document.getElementById("about-me-section");
+
+  if (mode === "standard") {
+    // Switch to traditional CV mode
+    openApplicationSection.style.display = "none";
+    aboutMeSection.style.display = "block";
+  } else {
+    // Switch to open application mode
+    openApplicationSection.style.display = "block";
+    aboutMeSection.style.display = "none";
+  }
+
+  // Update active button states
+  updateAboutModeButtons();
+}
+
+// Update active states for link mode buttons
+function updateLinkModeButtons() {
+  const linksBtn = document.getElementById("links-btn");
+  const qrBtn = document.getElementById("qr-btn");
+
+  linksBtn.classList.toggle("active", currentLinkMode === "links");
+  qrBtn.classList.toggle("active", currentLinkMode === "qr");
+}
+
+// Update active states for about mode buttons
+function updateAboutModeButtons() {
+  const applicationBtn = document.getElementById("application-btn");
+  const standardBtn = document.getElementById("standard-btn");
+
+  applicationBtn.classList.toggle("active", currentAboutMode === "application");
+  standardBtn.classList.toggle("active", currentAboutMode === "standard");
 }
 
 // Generate QR codes using QR Server API
@@ -104,7 +159,11 @@ window.addEventListener("DOMContentLoaded", () => {
   // Initialize DOM references
   printModal = document.getElementById("printModal");
 
-  // Auto-detect browser language
+  // Auto-detect browser language and set active button
   const preferred = navigator.language.startsWith("no") ? "no" : "en";
   setLanguage(preferred);
+
+  // Set default modes and update button states
+  setLinkMode("links"); // Default to links mode
+  setAboutMode("application"); // Default to application mode
 });
