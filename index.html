@@ -8,18 +8,40 @@
     <script src="script.js"></script>
   </head>
   <body>
+    <!-- Tab Controls - Outside CV -->
+    <div class="tab-controls">
+      <button onclick="setLanguage('no')" class="tab-button">Norsk</button>
+      <button onclick="setLanguage('en')" class="tab-button">English</button>
+      <button onclick="setLinkMode('links')" class="tab-button" id="links-btn">
+        🔗 Links
+      </button>
+      <button onclick="setLinkMode('qr')" class="tab-button" id="qr-btn">
+        📱 QR Codes
+      </button>
+      <button
+        onclick="setAboutMode('application')"
+        class="tab-button"
+        id="application-btn"
+      >
+        <span data-lang="no">💼 Søknad</span>
+        <span data-lang="en">💼 Application</span>
+      </button>
+      <button
+        onclick="setAboutMode('standard')"
+        class="tab-button"
+        id="standard-btn"
+      >
+        <span data-lang="no">📄 Standard CV</span>
+        <span data-lang="en">📄 Standard CV</span>
+      </button>
+      <button onclick="printCV()" class="tab-button">
+        <span data-lang="no">📄 PDF</span>
+        <span data-lang="en">📄 PDF</span>
+      </button>
+    </div>
+
+    <!-- CV Container -->
     <div class="cv-container">
-      <div class="language-toggle">
-        <button onclick="setLanguage('no')">Norsk</button>
-        <button onclick="setLanguage('en')">English</button>
-        <button onclick="toggleQRMode()">
-          <span id="qr-toggle-text">🔗 Links</span>
-        </button>
-        <button onclick="printCV()">
-          <span data-lang="no">📄 PDF</span>
-          <span data-lang="en">📄 PDF</span>
-        </button>
-      </div>
       <aside class="sidebar">
         <h1>Marius Skårdal Christensen</h1>
         <div class="photo">
@@ -113,7 +135,73 @@
         </section>
       </aside>
       <main class="content">
-        <section>
+        <!-- Open Application Section (Default) -->
+        <section id="open-application-section">
+          <h2>
+            <span data-lang="no">Hvem jeg er og hva jeg ser etter</span>
+            <span data-lang="en">Who I Am & What I'm Looking For</span>
+          </h2>
+          <p>
+            <span data-lang="no">
+              Jeg er en frontend-utvikler med lidenskap for brukervennlige og
+              moderne løsninger.<br />
+              For tiden fullfører jeg Kodehode-programmet gjennom NAV, hvor jeg
+              har fått praktisk opplæring i HTML, CSS, JavaScript, React,
+              Tailwind og moderne arbeidsmetoder innen webutvikling.
+            </span>
+            <span data-lang="en">
+              I'm a frontend developer with a passion for creating user-friendly
+              and modern solutions.<br />
+              I'm currently completing the Kodehode program through NAV, where
+              I've been training in HTML, CSS, JavaScript, React, Tailwind, and
+              real-world tech workflows.
+            </span>
+          </p>
+          <p>
+            <span data-lang="no">
+              Nå er jeg på jakt etter en praksisplass – gjerne med en varighet
+              på minst seks måneder – der jeg kan bruke det jeg har lært, bidra
+              i et team og videreutvikle ferdighetene mine.<br />
+              Dersom samarbeidet fungerer godt, håper jeg det kan føre til en
+              fast stilling på sikt.
+            </span>
+            <span data-lang="en">
+              I'm now looking for an internship opportunity — ideally six months
+              or more — where I can apply what I've learned, contribute to a
+              team, and continue developing my skills.<br />
+              If it's a good match, I'm motivated to grow into a full-time role.
+            </span>
+          </p>
+          <p>
+            <span data-lang="no">
+              Med bakgrunn fra kundeservice, helsevesen og andre team-baserte
+              roller, tar jeg med meg gode kommunikasjonsferdigheter,
+              løsningsorientering og en sterk lærevilje.<br />
+              Jeg er nysgjerrig, strukturert og trives med å utforske nye
+              teknologier.
+            </span>
+            <span data-lang="en">
+              With a background in customer service, healthcare, and
+              teamwork-heavy environments, I bring strong communication skills,
+              a problem-solving mindset, and a willingness to learn.<br />
+              I'm solution-oriented, curious, and enjoy exploring new
+              technologies.
+            </span>
+          </p>
+          <p>
+            <span data-lang="no">
+              Hvis dere ser etter en motivert frontend-praktikant som er klar
+              for å bidra fra dag én, tar jeg gjerne en prat!
+            </span>
+            <span data-lang="en">
+              If you're looking for a motivated frontend intern ready to hit the
+              ground running, I'd love to hear from you!
+            </span>
+          </p>
+        </section>
+
+        <!-- Traditional About Me Section (Hidden by default) -->
+        <section id="about-me-section" style="display: none">
           <h2>
             <span data-lang="no">Om meg</span>
             <span data-lang="en">About me</span>
@@ -129,11 +217,12 @@
               Frontend developer with a passion for user-friendly and modern
               solutions. I have a background from frontend studies at Noroff and
               am currently participating in the Kodehode program through NAV.
-              I’m solution-oriented, curious, and enjoy learning new
+              I'm solution-oriented, curious, and enjoy learning new
               technologies and working in teams.
             </span>
           </p>
         </section>
+
         <section>
           <h2>
             <span data-lang="no">Jobberfaring</span>

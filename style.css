@@ -75,9 +75,10 @@ body {
   position: relative;
   display: flex;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 0 auto 40px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 8px 8px;
 }
 
 /* ===== SIDEBAR STYLES ===== */
@@ -251,110 +252,50 @@ body {
   margin-top: 5px;
 }
 
-/* ===== UI CONTROLS ===== */
-.language-toggle {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  z-index: 10;
-}
-
-/* Language switching - English hidden by default */
-[data-lang="en"] {
-  display: none;
-}
-
-/* Custom print modal */
-.print-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-.print-modal.show {
+/* ===== TAB CONTROLS ===== */
+.tab-controls {
+  max-width: 1200px;
+  margin: 20px auto 0;
   display: flex;
+  justify-content: flex-end;
+  gap: 0;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
-.print-modal-content {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+.tab-button {
+  background-color: #e9ecef;
+  color: #495057;
+  border: 1px solid #dee2e6;
+  border-bottom: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  margin-left: 2px;
+  border-radius: 8px 8px 0 0;
 }
 
-.print-modal h3 {
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 20px;
+.tab-button:first-child {
+  margin-left: 0;
 }
 
-.print-modal p {
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  text-align: left;
+.tab-button:last-child {
+  border-radius: 8px 8px 0 0;
 }
 
-.print-modal-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
+.tab-button:focus {
+  outline: none;
 }
 
-.print-modal button {
+/* Active language button styling */
+.tab-button.active {
   background-color: #2c3e50;
   color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  min-width: 80px;
-}
-
-.print-modal button:hover {
-  background-color: #1a242f;
-}
-
-.print-modal button.cancel {
-  background-color: #95a5a6;
-}
-
-.print-modal button.cancel:hover {
-  background-color: #7f8c8d;
-}
-
-.language-toggle button {
-  background-color: #2c3e50;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  margin-left: 8px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-}
-
-.language-toggle button:hover {
-  background-color: #1a242f;
+  border-color: #2c3e50;
 }
 
 /* ===== PRINT STYLES ===== */
@@ -371,7 +312,7 @@ body {
   }
 
   /* Hide UI elements */
-  .language-toggle,
+  .tab-controls,
   .print-modal {
     display: none;
   }
@@ -498,8 +439,31 @@ body {
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media screen and (max-width: 768px) {
+  .tab-controls {
+    margin: 10px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1px;
+  }
+
+  .tab-button {
+    padding: 8px 12px;
+    font-size: 12px;
+    margin-left: 1px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .tab-button:first-child {
+    margin-left: 1px;
+  }
+
+  .tab-button:last-child {
+    border-radius: 6px 6px 0 0;
+  }
+
   .cv-container {
     flex-direction: column;
+    border-radius: 0 0 6px 6px;
   }
 
   .sidebar {
@@ -508,10 +472,6 @@ body {
 
   .content {
     padding: 20px;
-  }
-
-  .language-toggle {
-    right: 20px;
   }
 
   /* Stack QR codes on very small screens */
@@ -524,4 +484,78 @@ body {
     width: 100px;
     height: 100px;
   }
+}
+
+/* ===== UI CONTROLS ===== */
+/* Language switching - English hidden by default */
+[data-lang="en"] {
+  display: none;
+}
+
+/* Custom print modal */
+.print-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.print-modal.show {
+  display: flex;
+}
+
+.print-modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.print-modal h3 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.print-modal p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.print-modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.print-modal button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 80px;
+}
+
+.print-modal button.cancel {
+  background-color: #95a5a6;
 }
