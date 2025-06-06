@@ -12,15 +12,23 @@
     <div class="tab-controls">
       <button onclick="setLanguage('no')" class="tab-button">Norsk</button>
       <button onclick="setLanguage('en')" class="tab-button">English</button>
-      <button onclick="setLinkMode('links')" class="tab-button" id="links-btn">
+      <button
+        onclick="setLinkMode('links')"
+        class="tab-button admin-tab"
+        id="links-btn"
+      >
         🔗 Links
       </button>
-      <button onclick="setLinkMode('qr')" class="tab-button" id="qr-btn">
+      <button
+        onclick="setLinkMode('qr')"
+        class="tab-button admin-tab"
+        id="qr-btn"
+      >
         📱 QR Codes
       </button>
       <button
         onclick="setAboutMode('application')"
-        class="tab-button"
+        class="tab-button admin-tab"
         id="application-btn"
       >
         <span data-lang="no">💼 Søknad</span>
@@ -28,13 +36,13 @@
       </button>
       <button
         onclick="setAboutMode('standard')"
-        class="tab-button"
+        class="tab-button admin-tab"
         id="standard-btn"
       >
         <span data-lang="no">📄 Standard CV</span>
         <span data-lang="en">📄 Standard CV</span>
       </button>
-      <button onclick="printCV()" class="tab-button">
+      <button onclick="printCV()" class="tab-button admin-tab">
         <span data-lang="no">📄 PDF</span>
         <span data-lang="en">📄 PDF</span>
       </button>

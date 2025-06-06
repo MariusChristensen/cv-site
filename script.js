@@ -3,6 +3,22 @@ let currentLanguage = "no";
 let printModal;
 let currentLinkMode = "links"; // "links" or "qr"
 let currentAboutMode = "application"; // "application" or "standard"
+let isAdminMode = false; // Admin mode state
+
+// Check if admin mode is enabled via URL parameter
+function checkAdminMode() {
+  const urlParams = new URLSearchParams(window.location.search);
+  isAdminMode = urlParams.get("admin") === "true";
+  toggleAdminTabs();
+}
+
+// Show/hide admin-only tabs based on admin mode
+function toggleAdminTabs() {
+  const adminTabs = document.querySelectorAll(".admin-tab");
+  adminTabs.forEach((tab) => {
+    tab.style.display = isAdminMode ? "" : "none";
+  });
+}
 
 // Language switching functionality
 function setLanguage(lang) {
@@ -158,6 +174,9 @@ function hideModal() {
 window.addEventListener("DOMContentLoaded", () => {
   // Initialize DOM references
   printModal = document.getElementById("printModal");
+
+  // Check admin mode from URL
+  checkAdminMode();
 
   // Auto-detect browser language and set active button
   const preferred = navigator.language.startsWith("no") ? "no" : "en";
