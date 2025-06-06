@@ -135,7 +135,7 @@ function printCV() {
       message: `For best resultat:
 • Velg "Lagre som PDF" som destinasjon
 • Sett marginer til "Ingen" eller "Minimum"
-• Aktiver "Bakgrunnsgrafik" hvis tilgjengelig`,
+• Aktiver "Bakgrunnsgrafikk" hvis tilgjengelig`,
     },
     en: {
       title: "Print Instructions",
