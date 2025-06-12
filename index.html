@@ -430,5 +430,32 @@
         </div>
       </div>
     </div>
+
+    <!-- Admin Password Modal -->
+    <div id="passwordModal" class="password-modal">
+      <div class="password-modal-content">
+        <h3>
+          <span data-lang="no">Admin Tilgang</span>
+          <span data-lang="en">Admin Access</span>
+        </h3>
+        <p>
+          <span data-lang="no"
+            >Skriv inn passordet for å få tilgang til admin-funksjoner:</span
+          >
+          <span data-lang="en">Enter password to access admin functions:</span>
+        </p>
+        <input type="password" id="passwordInput" placeholder="Password" />
+        <div class="password-modal-buttons">
+          <button onclick="cancelPassword()" class="cancel">
+            <span data-lang="no">Avbryt</span>
+            <span data-lang="en">Cancel</span>
+          </button>
+          <button onclick="submitPassword()">
+            <span data-lang="no">Logg inn</span>
+            <span data-lang="en">Login</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
