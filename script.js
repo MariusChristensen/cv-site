@@ -1,6 +1,7 @@
 // Global variables for better performance
 let currentLanguage = "no";
 let printModal;
+let passwordModal;
 let currentLinkMode = "links"; // "links" or "qr"
 let currentAboutMode = "application"; // "application" or "standard"
 let isAdminMode = false; // Admin mode state
@@ -8,8 +9,40 @@ let isAdminMode = false; // Admin mode state
 // Check if admin mode is enabled via URL parameter
 function checkAdminMode() {
   const urlParams = new URLSearchParams(window.location.search);
-  isAdminMode = urlParams.get("admin") === "true";
-  toggleAdminTabs();
+
+  if (urlParams.get("admin") === "true") {
+    // Ensure admin mode is false while password modal is shown
+    isAdminMode = false;
+    toggleAdminTabs(); // Hide admin tabs initially
+    // Show custom password modal
+    showPasswordModal();
+  } else {
+    isAdminMode = false;
+    toggleAdminTabs();
+  }
+}
+
+// Validate admin password using Netlify function
+async function validateAdminPassword(password) {
+  try {
+    const response = await fetch("/.netlify/functions/admin-auth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const result = await response.json();
+    return result.valid;
+  } catch (error) {
+    console.error("Error validating password:", error);
+    return false;
+  }
 }
 
 // Show/hide admin-only tabs based on admin mode
@@ -170,10 +203,74 @@ function hideModal() {
   printModal.classList.remove("show");
 }
 
+// Password modal functions
+function showPasswordModal() {
+  passwordModal.classList.add("show");
+  // Focus on input and clear any previous value
+  const input = document.getElementById("passwordInput");
+  input.value = "";
+  setTimeout(() => input.focus(), 100);
+
+  // Handle Enter key submission
+  input.onkeydown = function (e) {
+    if (e.key === "Enter") {
+      submitPassword();
+    }
+  };
+}
+
+function hidePasswordModal() {
+  passwordModal.classList.remove("show");
+}
+
+async function submitPassword() {
+  const password = document.getElementById("passwordInput").value;
+
+  if (!password) {
+    return;
+  }
+
+  try {
+    const isValid = await validateAdminPassword(password);
+
+    if (isValid) {
+      isAdminMode = true;
+      console.log("Admin mode activated");
+      hidePasswordModal();
+      toggleAdminTabs();
+    } else {
+      // Show error styling
+      const input = document.getElementById("passwordInput");
+      input.style.borderColor = "#e74c3c";
+      input.style.backgroundColor = "#fdf2f2";
+
+      // Reset styling after 2 seconds
+      setTimeout(() => {
+        input.style.borderColor = "";
+        input.style.backgroundColor = "";
+      }, 2000);
+
+      // Clear input
+      input.value = "";
+      input.focus();
+    }
+  } catch (error) {
+    console.error("Error during password validation:", error);
+    cancelPassword();
+  }
+}
+
+function cancelPassword() {
+  isAdminMode = false;
+  hidePasswordModal();
+  toggleAdminTabs();
+}
+
 // Initialize when DOM is ready
 window.addEventListener("DOMContentLoaded", () => {
   // Initialize DOM references
   printModal = document.getElementById("printModal");
+  passwordModal = document.getElementById("passwordModal");
 
   // Check admin mode from URL
   checkAdminMode();
